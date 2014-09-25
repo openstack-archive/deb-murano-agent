@@ -1,0 +1,5 @@
+murano-agent (2014.2~b3-1) experimental; urgency=low
+
+  * Initial release. (Closes: #762851)
+
+ -- Thomas Goirand <zigo@debian.org>  Fri, 26 Sep 2014 00:50:23 +0800

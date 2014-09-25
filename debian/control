@@ -1,0 +1,62 @@
+Source: murano-agent
+Section: net
+Priority: extra
+Maintainer: PKG OpenStack <openstack-devel@lists.alioth.debian.org>
+Uploaders: Thomas Goirand <zigo@debian.org>,
+Build-Depends: debhelper (>= 9),
+               dh-systemd,
+               openstack-pkg-tools (>= 12~),
+               po-debconf,
+               python-all (>= 2.6.6-3~),
+               python-pbr (>= 0.6),
+               python-sphinx (>= 1.2.1)
+Build-Depends-Indep: python-anyjson (>= 0.3.3),
+                     python-babel,
+                     python-bunch,
+                     python-coverage (>= 3.6),
+                     python-eventlet (>= 0.13.0),
+                     python-hacking,
+                     python-iso8601,
+                     python-kombu (>= 2.4.8),
+                     python-oslo.config (>= 1.2.1),
+                     python-semver,
+                     python-six (>= 1.7.0),
+                     python-stevedore (>= 0.14),
+                     python-testtools (>= 0.9.32),
+                     python-unittest2,
+                     subunit (>= 0.0.18),
+                     testrepository (>= 0.0.18)
+Standards-Version: 3.9.5
+Homepage: https://github.com/openstack/murano-agent
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=openstack/murano-agent.git;a=summary
+Vcs-Git: git://anonscm.debian.org/openstack/murano-agent.git
+
+Package: murano-agent
+Architecture: all
+Section: python
+Pre-Depends: dpkg (>= 1.15.6~)
+Depends: adduser,
+         python-anyjson (>= 0.3.3),
+         python-babel,
+         python-bunch,
+         python-eventlet (>= 0.13.0),
+         python-iso8601,
+         python-kombu (>= 2.4.8),
+         python-oslo.config (>= 1.2.1),
+         python-pbr (>= 0.6),
+         python-semver,
+         python-six (>= 1.7.0),
+         python-stevedore (>= 0.14),
+         ${misc:Depends},
+         ${python:Depends}
+Recommends: python-ldap
+Description: cloud-ready application catalog - VM agent
+ Murano Project introduces an application catalog, which allows application
+ developers and cloud administrators to publish various cloud-ready
+ applications in a browsable categorised catalog, which may be used by the
+ cloud users (including the inexperienced ones) to pick-up the needed
+ applications and services and composes the reliable environments out of them
+ in a "push-the-button" manner.
+ .
+ This package contains the Murano Agent, which is a VM-side guest agent that
+ accepts commands from Murano Conductor and executes them.

@@ -1,0 +1,2 @@
+version=3
+https://github.com/stackforge/murano-agent/tags .*/(\d[\d\.]+)\.tar\.gz
