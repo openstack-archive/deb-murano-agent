@@ -44,9 +44,9 @@ chown ${SYSTEM_USER} ${LOCK_DIR} /var/run/${PROJECT_NAME}
 [ "x$USE_LOGFILE" != "xno" ] && DAEMON_ARGS="$DAEMON_ARGS --log-file=/var/log/${PROJECT_NAME}/murano-agent.log"
 
 do_start(){
-	start-stop-daemon --start --quiet --background --chuid ${SYSTEM_USER}:${SYSTEM_GROUP} --make-pidfile --pidfile $PIDFILE --startas $DAEMON --test > /dev/null \
+	start-stop-daemon --start --quiet --background --make-pidfile --pidfile $PIDFILE --startas $DAEMON --test > /dev/null \
 		|| return 1
-	start-stop-daemon --start --quiet --background --chuid ${SYSTEM_USER}:${SYSTEM_GROUP} --make-pidfile --pidfile $PIDFILE --startas $DAEMON -- \
+	start-stop-daemon --start --quiet --background --make-pidfile --pidfile $PIDFILE --startas $DAEMON -- \
 		$DAEMON_ARGS || return 2
 }
 
