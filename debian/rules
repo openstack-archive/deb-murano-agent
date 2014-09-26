@@ -1,5 +1,8 @@
 #!/usr/bin/make -f
 
+PYTHONS:=$(shell pyversions -vr)
+PYTHON3S:=$(shell py3versions -vr)
+
 UPSTREAM_GIT = git://github.com/stackforge/murano-agent.git
 
 include /usr/share/openstack-pkg-tools/pkgos.make
@@ -12,8 +15,15 @@ override_dh_clean:
 	rm -rf 	build
 	dh_clean -O--buildsystem=python_distutils
 
+override_dh_auto_install:
+	set -e ; for pyvers in $(PYTHONS); do \
+		python$$pyvers setup.py install --install-layout=deb \
+			--root $(CURDIR)/debian/murano-agent ; \
+	done
+
 override_dh_auto_build:
 	dh_auto_build
+
 
 override_dh_install:
 	dh_install -O--buildsystem=python_distutils --fail-missing
