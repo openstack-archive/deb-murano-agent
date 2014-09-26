@@ -17,7 +17,7 @@
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="OpenStack Murano Agent"
 PROJECT_NAME=murano
-NAME=${PROJECT_NAME}-agent
+NAME=${PROJECT_NAME}agent
 DAEMON=/usr/bin/${NAME}
 DAEMON_ARGS="--config-file=/etc/${PROJECT_NAME}/${PROJECT_NAME}.conf"
 PIDFILE=/var/run/${PROJECT_NAME}/${NAME}.pid
