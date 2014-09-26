@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenStack Murano Agent
+After=network.service rabbitmq-server.service ntp.service
+
+[Service]
+User=murano-agent
+Group=murano-agent
+ExecStart=/etc/init.d/murano-agent systemd-start
+ExecStop=/etc/init.d/murano-agent systemd-stop
+PIDFile=/var/run/murano/muranoagent.pid
+Restart=on-failure
+Type=forking
+
+[Install]
+WantedBy=multi-user.target

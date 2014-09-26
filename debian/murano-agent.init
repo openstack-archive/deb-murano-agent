@@ -19,11 +19,11 @@ DESC="OpenStack Murano Agent"
 PROJECT_NAME=murano
 NAME=${PROJECT_NAME}agent
 DAEMON=/usr/bin/${NAME}
-DAEMON_ARGS="--config-file=/etc/${PROJECT_NAME}/${PROJECT_NAME}.conf"
+DAEMON_ARGS="--config-file=/etc/murano-agent/muranoagent.conf --storage=/var/lib/murano-agent"
 PIDFILE=/var/run/${PROJECT_NAME}/${NAME}.pid
 SCRIPTNAME=/etc/init.d/murano
-SYSTEM_USER=${PROJECT_NAME}
-SYSTEM_GROUP=${PROJECT_NAME}
+SYSTEM_USER=${PROJECT_NAME}-agent
+SYSTEM_GROUP=${PROJECT_NAME}-agent
 LOCK_DIR=/var/lock/${PROJECT_NAME}/
 
 # Exit if the package is not installed
