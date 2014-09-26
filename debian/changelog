@@ -1,4 +1,4 @@
-murano-agent (2014.2~b3-1) experimental; urgency=low
+murano-agent (2014.2~b3+dfsg1-1) experimental; urgency=low
 
   * Initial release. (Closes: #762851)
 
