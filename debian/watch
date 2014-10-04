@@ -1,3 +1,2 @@
 version=3
-opts=dversionmangle=s/\+dfsg\d+$// \
 https://github.com/stackforge/murano-agent/tags .*/(\d[\d\.]+)\.tar\.gz
