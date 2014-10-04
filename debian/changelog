@@ -1,3 +1,11 @@
+murano-agent (2014.2~rc1-1) experimental; urgency=medium
+
+  * New upstream release:
+    - The windows agent sources are gone to another repository, so we don't
+    need to do a +dfsg version.
+
+ -- Thomas Goirand <zigo@debian.org>  Sat, 04 Oct 2014 20:15:22 +0800
+
 murano-agent (2014.2~b3+dfsg1-2) experimental; urgency=medium
 
   * Runs the agent as root, as this is how it should work.
