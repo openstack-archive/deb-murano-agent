@@ -26,7 +26,7 @@ Build-Depends-Indep: python-anyjson (>= 0.3.3),
                      python-unittest2,
                      subunit (>= 0.0.18),
                      testrepository (>= 0.0.18)
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Homepage: https://github.com/openstack/murano-agent
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=openstack/murano-agent.git;a=summary
 Vcs-Git: git://anonscm.debian.org/openstack/murano-agent.git
