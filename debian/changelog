@@ -4,6 +4,9 @@ murano-agent (2014.2~rc1-1) experimental; urgency=medium
     - The windows agent sources are gone to another repository, so we don't
     need to do a +dfsg version.
   * Updated (build-)depends for this release.
+  * Now using templated init script for sysv-rc, generated systemd unit and
+    upstart jobs, using openstack-pkg-tools >= 14.
+  * Added a logrotate file.
 
  -- Thomas Goirand <zigo@debian.org>  Sat, 04 Oct 2014 20:15:22 +0800
 

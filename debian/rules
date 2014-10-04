@@ -13,6 +13,7 @@ export OSLO_PACKAGE_VERSION=$(VERSION)
 
 override_dh_clean:
 	rm -rf 	build
+	rm -f debian/*.init debian/*.service debian/*.upstart
 	dh_clean -O--buildsystem=python_distutils
 
 override_dh_auto_install:
