@@ -19,3 +19,4 @@ NAME=${PROJECT_NAME}agent
 SYSTEM_USER=root
 SYSTEM_GROUP=root
 SCRIPTNAME=/etc/init.d/murano-agent
+CONFIG_FILE=/etc/murano-agent/muranoagent.conf
