@@ -1,6 +1,7 @@
 murano-agent (2015.1~b1-1) UNRELEASED; urgency=medium
 
   * New upstream release.
+  * Now generating the config file using oslo-config-generator.
 
  -- Thomas Goirand <zigo@debian.org>  Fri, 02 Jan 2015 17:57:18 +0100
 

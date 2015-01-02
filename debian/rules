@@ -28,8 +28,8 @@ override_dh_auto_build:
 
 override_dh_install:
 	dh_install -O--buildsystem=python_distutils --fail-missing
-	install -D -m 640 $(CURDIR)/etc/muranoagent/muranoagent.conf.sample \
-		$(CURDIR)/debian/murano-agent/usr/share/murano-agent/muranoagent.conf
+	mkdir -p $(CURDIR)/debian/murano-agent/usr/share/murano-agent
+	PYTHONPATH=. oslo-config-generator --output-file $(CURDIR)/debian/murano-agent/usr/share/murano-agent/muranoagent.conf --namespace muranoagent
 
 override_dh_auto_test:
 ifeq (,$(findstring nocheck, $(DEB_BUILD_OPTIONS)))
