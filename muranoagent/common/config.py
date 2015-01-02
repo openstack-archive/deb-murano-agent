@@ -14,7 +14,7 @@
 #    under the License.
 
 """
-Routines for configuring Glance
+Routines for configuring Murano-Agent
 """
 
 import logging
@@ -28,9 +28,12 @@ from oslo.config import cfg
 from muranoagent import version
 
 CONF = cfg.CONF
-CONF.register_cli_opt(cfg.StrOpt('storage',
-                                 default='/var/murano/plans',
-                                 help='Directory to store execution plans'))
+
+storage_opt = [
+    cfg.StrOpt('storage',
+               default='/var/murano/plans',
+               help='Directory to store execution plans')
+]
 
 rabbit_opts = [
     cfg.StrOpt('host',
@@ -65,6 +68,7 @@ rabbit_opts = [
 
 ]
 
+CONF.register_cli_opts(storage_opt)
 CONF.register_opts(rabbit_opts, group='rabbitmq')
 
 

@@ -183,7 +183,6 @@ CONF.register_opts(log_opts)
 logging.AUDIT = logging.INFO + 1
 logging.addLevelName(logging.AUDIT, 'AUDIT')
 
-
 try:
     NullHandler = logging.NullHandler
 except AttributeError:  # NOTE(jkoelker) NullHandler added in Python 2.7
