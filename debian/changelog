@@ -1,6 +1,7 @@
-murano-agent (2015.1~b3-1) UNRELEASED; urgency=medium
+murano-agent (2015.1~rc1-1) unstable; urgency=medium
 
   * New upstream release.
+  * Uploading to unstable.
   * Now generating the config file using oslo-config-generator.
 
  -- Thomas Goirand <zigo@debian.org>  Fri, 02 Jan 2015 17:57:18 +0100

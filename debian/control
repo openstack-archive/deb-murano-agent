@@ -4,29 +4,32 @@ Priority: extra
 Maintainer: PKG OpenStack <openstack-devel@lists.alioth.debian.org>
 Uploaders: Thomas Goirand <zigo@debian.org>,
 Build-Depends: debhelper (>= 9),
-               dh-systemd,
                dh-python,
-               openstack-pkg-tools (>= 22~),
-               po-debconf,
-               python-all (>= 2.6.6-3~),
-               python-pbr (>= 0.6),
-               python-sphinx (>= 1.2.1)
-Build-Depends-Indep: python-anyjson (>= 0.3.3),
-                     python-babel (>= 1.3),
+               dh-systemd,
+               openstack-pkg-tools (>= 23~),
+               python-all,
+               python-pbr,
+               python-setuptools,
+               python-sphinx,
+Build-Depends-Indep: python-anyjson,
+                     python-babel,
                      python-bunch,
-                     python-coverage (>= 3.6),
-                     python-eventlet (>= 0.15.1),
+                     python-coverage,
+                     python-eventlet (>= 0.16.1),
                      python-hacking,
-                     python-iso8601 (>= 0.1.9),
-                     python-kombu (>= 2.5.0),
-                     python-oslo.config (>= 1.4.0.0),
-                     python-semver,
-                     python-six (>= 1.7.0),
-                     python-stevedore (>= 1.0.0),
-                     python-testtools (>= 0.9.32),
+                     python-iso8601,
+                     python-kombu,
+                     python-mock,
+                     python-oslo.config (>= 1:1.9.3),
+                     python-requests,
+                     python-semantic-version (>= 2.3.1),
+                     python-six (>= 1.9.0),
+                     python-stevedore (>= 1.3.0),
+                     python-testtools,
                      python-unittest2,
-                     subunit (>= 0.0.18),
-                     testrepository (>= 0.0.18)
+                     python-yaml,
+                     subunit,
+                     testrepository,
 Standards-Version: 3.9.6
 Homepage: https://github.com/openstack/murano-agent
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=openstack/murano-agent.git;a=summary
@@ -35,22 +38,24 @@ Vcs-Git: git://anonscm.debian.org/openstack/murano-agent.git
 Package: murano-agent
 Architecture: all
 Section: python
-Pre-Depends: dpkg (>= 1.15.6~)
+Pre-Depends: dpkg (>= 1.15.6~),
 Depends: adduser,
          python-anyjson (>= 0.3.3),
-         python-babel (>= 1.3),
+         python-babel,
          python-bunch,
-         python-eventlet (>= 0.15.1),
-         python-iso8601 (>= 0.1.9),
-         python-kombu (>= 2.5.0),
-         python-oslo.config (>= 1.4.0.0),
-         python-pbr (>= 0.6),
-         python-semver,
-         python-six (>= 1.7.0),
-         python-stevedore (>= 1.0.0),
+         python-eventlet (>= 0.16.1),
+         python-iso8601,
+         python-kombu,
+         python-oslo.config (>= 1:1.9.3),
+         python-pbr,
+         python-requests,
+         python-semantic-version (>= 2.3.1),
+         python-six (>= 1.9.0),
+         python-stevedore (>= 1.3.0),
+         python-yaml,
          ${misc:Depends},
-         ${python:Depends}
-Recommends: python-ldap
+         ${python:Depends},
+Recommends: python-ldap,
 Description: cloud-ready application catalog - VM agent
  Murano Project introduces an application catalog, which allows application
  developers and cloud administrators to publish various cloud-ready
