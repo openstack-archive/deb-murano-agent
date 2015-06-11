@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "purge" ] ; then
+	rm -f /etc/murano-agent/muranoagent.conf
+	rmdir --ignore-fail-on-non-empty /etc/murano-agent || true
+fi
+
+#DEBHELPER#
+
+exit 0
