@@ -1,3 +1,10 @@
+murano-agent (2015.1.0-3) unstable; urgency=medium
+
+  * Also purges /var/log/murano-agent and /var/lib/murano-agent. Thanks to
+    Andreas Beckmann <anbe@debian.org> for the report (Closes: #788830).
+
+ -- Thomas Goirand <zigo@debian.org>  Mon, 15 Jun 2015 15:28:58 +0200
+
 murano-agent (2015.1.0-2) unstable; urgency=medium
 
   * Purges /etc/murano-agent/muranoagent.conf on purge (Closes: #788130).

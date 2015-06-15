@@ -5,6 +5,8 @@ set -e
 if [ "$1" = "purge" ] ; then
 	rm -f /etc/murano-agent/muranoagent.conf
 	rmdir --ignore-fail-on-non-empty /etc/murano-agent || true
+	rm -rf /var/lib/murano-agent
+	rm -rf /var/log/murano-agent
 fi
 
 #DEBHELPER#
