@@ -17,10 +17,11 @@ import os
 import subprocess
 import yaml
 
+from oslo_log import log as logging
+
 import muranoagent.exceptions
 from muranoagent import executors
 from muranoagent.executors import chef_puppet_executor_base
-from muranoagent.openstack.common import log as logging
 
 LOG = logging.getLogger(__name__)
 
@@ -86,8 +87,10 @@ class PuppetExecutor(chef_puppet_executor_base.ChefPuppetExecutorBase):
 
     def _create_manifest(self, module_name, module_recipe):
 
-        return "node 'default' { class  { " + module_name + '::' +\
-               module_recipe + ':}}'
+        if len(module_recipe) == 0:
+            return "node 'default' {{ class {{ {0}:}}}}".format(module_name)
+        return "node 'default' {{ class {{ {0}::{1}:}}}}".\
+            format(module_name, module_recipe)
 
     def _create_hiera_data(self, cookbook_name,
                            recipe_attributes):

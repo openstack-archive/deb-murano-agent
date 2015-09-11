@@ -18,9 +18,10 @@ import json
 import os
 import subprocess
 
+from oslo_log import log as logging
+
 import muranoagent.exceptions
 from muranoagent import executors
-from muranoagent.openstack.common import log as logging
 
 
 LOG = logging.getLogger(__name__)
@@ -31,11 +32,11 @@ class ChefPuppetExecutorBase(object):
         self._name = name
 
     def load(self, path, options):
-        """It loads the path and options from template into
-        the executor.
+        """Load the path and options from template into the executor.
 
            :param path: The path
            :param options: execution plan options.
+
         """
         self._path = path
         self._capture_stdout = options.get('captureStdout', True)

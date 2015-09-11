@@ -20,8 +20,9 @@ import requests
 import shutil
 import urlparse
 
+from oslo_log import log as logging
+
 from muranoagent.common import config
-from muranoagent.openstack.common import log as logging
 
 CONF = config.CONF
 LOG = logging.getLogger(__name__)
@@ -86,8 +87,10 @@ class FilesManager(object):
         return out_path
 
     def _download_url_file(self, file_def):
-        """It download the file in the murano-agent. It can proceed
-        from a git file or any other internal URL
+        """It download the file in the murano-agent.
+
+        It can proceed from a git file or any other internal URL
+
         """
 
         if 'URL' not in file_def:
