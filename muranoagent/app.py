@@ -18,11 +18,11 @@ import sys
 import time
 import types
 
-import bunch
 from oslo_log import log as logging
 from oslo_service import service
 import semantic_version
 
+from muranoagent import bunch
 from muranoagent.common import config
 from muranoagent.common import messaging
 from muranoagent import exceptions as exc
@@ -33,7 +33,7 @@ from muranoagent import execution_result as ex_result
 CONF = config.CONF
 
 LOG = logging.getLogger(__name__)
-max_format_version = semantic_version.Spec('<=2.1.0')
+max_format_version = semantic_version.Spec('<=2.2.0')
 
 
 class MuranoAgent(service.Service):
@@ -101,8 +101,11 @@ class MuranoAgent(service.Service):
             msg = messaging.Message()
             msg.body = result
             msg.id = result.get('SourceID')
+            routing_key = CONF.rabbitmq.result_routing_key
+            if ('ReplyTo' in result) and CONF.enable_dynamic_result_queue:
+                    routing_key = result.pop('ReplyTo')
             mq.send(message=msg,
-                    key=CONF.rabbitmq.result_routing_key,
+                    key=routing_key,
                     exchange=CONF.rabbitmq.result_exchange)
         return True
 
@@ -145,6 +148,8 @@ class MuranoAgent(service.Service):
     def _handle_message(self, msg):
         if 'ID' not in msg.body and msg.id:
             msg.body['ID'] = msg.id
+        if 'ReplyTo' not in msg.body and msg.reply_to:
+            msg.body['ReplyTo'] = msg.reply_to
         try:
             self._verify_plan(msg.body)
             self._queue.put_execution_plan(msg.body)
@@ -152,6 +157,9 @@ class MuranoAgent(service.Service):
             try:
                 execution_result = ex_result.ExecutionResult.from_error(
                     err, bunch.Bunch(msg.body))
+                if ('ReplyTo' in msg.body) and \
+                        CONF.enable_dynamic_result_queue:
+                    execution_result['ReplyTo'] = msg.body.get('ReplyTo')
 
                 self._send_result(execution_result)
             except ValueError:
@@ -204,7 +212,7 @@ class MuranoAgent(service.Service):
                     2, 'Script {0} misses entry point {1}'.format(
                         name, script['EntryPoint']))
 
-        if plan_format_version in semantic_version.Spec('==2.1.0'):
+        if plan_format_version in semantic_version.Spec('>=2.1.0'):
             if script['Type'] not in ('Application', 'Chef', 'Puppet'):
                 raise exc.IncorrectFormat(
                     2, 'Script has not a valid type {0}'.format(
@@ -220,6 +228,18 @@ class MuranoAgent(service.Service):
                         2, 'Wrong EntryPoint {0} for Puppet/Chef '
                            'executors. :: needed'.format(name,
                                                          script['EntryPoint']))
+
+            for option in script['Options']:
+                if option in ('useBerkshelf', 'berksfilePath'):
+                    if plan_format_version in semantic_version.Spec('<2.2.0'):
+                        raise exc.IncorrectFormat(
+                            2, 'Script has an option {0} invalid '
+                               'for version {1}'.format(option,
+                                                        plan_format_version))
+                    elif script['Type'] != 'Chef':
+                        raise exc.IncorrectFormat(
+                            2, 'Script has an option {0} invalid '
+                               'for type {1}'.format(option, script['Type']))
 
         for additional_file in script.get('Files', []):
                 mns_error = ('Script {0} misses file {1}'.

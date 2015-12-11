@@ -12,11 +12,11 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import bunch
 import fixtures
 import mock
 
 from muranoagent import app
+from muranoagent import bunch
 from muranoagent.common import config as cfg
 from muranoagent import exceptions as exc
 from muranoagent.tests.unit import base
@@ -69,5 +69,14 @@ class TestApp(base.MuranoAgentTestCase, fixtures.FunctionFixture):
 
     def test_verify_execution_plan_no_files(self):
         template = self.useFixture(ep.ExPlanDownloableNoFiles()).execution_plan
+        self.assertRaises(exc.IncorrectFormat,
+                          self.agent._verify_plan, template)
+
+    def test_verify_execution_plan_berkshelf(self):
+        template = self.useFixture(ep.ExPlanBerkshelf()).execution_plan
+        self.agent._verify_plan(template)
+
+    def test_verify_execution_plan_berkshelf_wrong_version(self):
+        template = self.useFixture(ep.ExPlanBerkWrongVersion()).execution_plan
         self.assertRaises(exc.IncorrectFormat,
                           self.agent._verify_plan, template)

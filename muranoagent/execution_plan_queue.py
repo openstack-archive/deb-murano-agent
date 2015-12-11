@@ -18,8 +18,8 @@ import os
 import shutil
 import time
 
-import bunch
 
+from muranoagent import bunch
 from muranoagent.common import config
 
 CONF = config.CONF
@@ -73,6 +73,8 @@ class ExecutionPlanQueue(object):
 
     def put_execution_result(self, result, execution_plan):
         timestamp = execution_plan['_timestamp']
+        if 'ReplyTo' in execution_plan:
+            result['ReplyTo'] = execution_plan.get('ReplyTo')
         path = os.path.join(
             self._plans_folder, timestamp,
             ExecutionPlanQueue.result_filename)
