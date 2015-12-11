@@ -1,3 +1,10 @@
+murano-agent (1:1.0.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Uploading to unstable (Closes: #802348).
+
+ -- Thomas Goirand <zigo@debian.org>  Fri, 23 Oct 2015 08:31:30 +0000
+
 murano-agent (1:1.0.0~b3-1) experimental; urgency=medium
 
   * New upstream release.
