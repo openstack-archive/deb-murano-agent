@@ -118,13 +118,13 @@ class MuranoAgent(service.Service):
             'port': rabbitmq.port,
             'virtual_host': rabbitmq.virtual_host,
             'ssl': rabbitmq.ssl,
-            'ca_certs': rabbitmq.ca_certs.strip() or None
+            'ca_certs': rabbitmq.ca_certs.strip() or None,
+            'insecure': rabbitmq.insecure
         }
         return messaging.MqClient(**connection_params)
 
     def _wait_plan(self):
         delay = 5
-        reconnect = False
         while True:
             try:
                 with self._create_rmq_client() as mq:
@@ -139,10 +139,6 @@ class MuranoAgent(service.Service):
                             if msg is not None:
                                 msg.ack()
                                 yield
-                                reconnect = True
-                            elif reconnect:
-                                reconnect = False
-                                break
             except KeyboardInterrupt:
                 break
             except Exception:
