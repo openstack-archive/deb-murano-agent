@@ -1,10 +1,14 @@
-murano-agent (1:2.0.0-2) UNRELEASED; urgency=medium
+murano-agent (1:3.0.0~b1-1) experimental; urgency=medium
 
+  [ Ondřej Nový ]
   * Standards-Version is 3.9.8 now (no change)
   * d/rules: Removed UPSTREAM_GIT, changed to default value
   * d/copyright: Changed source URL to new one
 
- -- Ondřej Nový <novy@ondrej.org>  Sat, 09 Apr 2016 19:23:52 +0200
+  [ Thomas Goirand ]
+  * New upstream release.
+
+ -- Thomas Goirand <zigo@debian.org>  Mon, 13 Jun 2016 14:25:14 +0200
 
 murano-agent (1:2.0.0-1) unstable; urgency=medium
 
