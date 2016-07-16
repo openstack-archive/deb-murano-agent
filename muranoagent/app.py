@@ -16,11 +16,11 @@
 import os
 import sys
 import time
-import types
 
 from oslo_log import log as logging
 from oslo_service import service
 import semantic_version
+import six
 
 from muranoagent import bunch
 from muranoagent.common import config
@@ -81,7 +81,7 @@ class MuranoAgent(service.Service):
             self._run(plan)
             return
 
-        msg_iterator.next()
+        next(msg_iterator)
 
     def _run(self, plan):
         try:
@@ -185,7 +185,7 @@ class MuranoAgent(service.Service):
 
         for attr in ('Scripts', 'Files', 'Options'):
             if attr in plan and not isinstance(
-                    plan[attr], types.DictionaryType):
+                    plan[attr], dict):
                 raise exc.IncorrectFormat(
                     2, '{0} is not a dictionary'.format(attr))
 
@@ -198,7 +198,7 @@ class MuranoAgent(service.Service):
     def _validate_script(self, name, script, plan_format_version, plan):
         for attr in ('Type', 'EntryPoint'):
             if attr not in script or not isinstance(script[attr],
-                                                    types.StringTypes):
+                                                    six.string_types):
                 raise exc.IncorrectFormat(
                     2, 'Incorrect {0} entry in script {1}'.format(
                         attr, name))
@@ -227,8 +227,7 @@ class MuranoAgent(service.Service):
                   "::" not in script['EntryPoint']):
                     raise exc.IncorrectFormat(
                         2, 'Wrong EntryPoint {0} for Puppet/Chef '
-                           'executors. :: needed'.format(name,
-                                                         script['EntryPoint']))
+                           'executors. :: needed'.format(script['EntryPoint']))
 
             for option in script['Options']:
                 if option in ('useBerkshelf', 'berksfilePath'):
@@ -246,7 +245,7 @@ class MuranoAgent(service.Service):
                 mns_error = ('Script {0} misses file {1}'.
                              format(name, additional_file))
                 if isinstance(additional_file, dict):
-                    if (additional_file.keys()[0] not in
+                    if (list(additional_file.keys())[0] not in
                             plan.get('Files', {}).keys()):
                         raise exc.IncorrectFormat(2, mns_error)
                 elif additional_file not in plan.get('Files', {}):
