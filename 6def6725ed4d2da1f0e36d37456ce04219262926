@@ -1,0 +1,13 @@
+Verified+1: Murano CI
+Code-Review+2: Ekaterina Chernova <efedorova@mirantis.com>
+Code-Review+1: Nikolay Starodubtsev <starodubcevna@gmail.com>
+Code-Review+1: Alexander Tivelkov <ativelkov@mirantis.com>
+Code-Review+1: Victor Ryzhenkin (freerunner) <vryzhenkin@mirantis.com>
+Code-Review+2: Stan Lagun <slagun@mirantis.com>
+Workflow+1: Stan Lagun <slagun@mirantis.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Tue, 01 Dec 2015 20:40:57 +0000
+Reviewed-on: https://review.openstack.org/249917
+Project: openstack/deb-murano-agent
+Branch: refs/heads/stable/liberty
