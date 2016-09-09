@@ -1,0 +1,11 @@
+Code-Review+2: Kirill Zaitsev <kzaitsev@mirantis.com>
+Code-Review+1: Tetiana Lashchova <tlashchova@mirantis.com>
+Code-Review+2: Serg Melikyan <smelikyan@mirantis.com>
+Workflow+1: Serg Melikyan <smelikyan@mirantis.com>
+Code-Review+2: zhurong <zhu.rong@99cloud.net>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Wed, 24 Aug 2016 09:34:18 +0000
+Reviewed-on: https://review.openstack.org/359144
+Project: openstack/deb-murano-agent
+Branch: refs/heads/master
