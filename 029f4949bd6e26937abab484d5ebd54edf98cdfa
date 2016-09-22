@@ -1,0 +1,10 @@
+Code-Review+2: Stan Lagun <slagun@mirantis.com>
+Code-Review+2: zhurong <zhu.rong@99cloud.net>
+Workflow+1: zhurong <zhu.rong@99cloud.net>
+Code-Review+1: avnish <avnish.pal@nectechnologies.in>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Wed, 21 Sep 2016 09:26:25 +0000
+Reviewed-on: https://review.openstack.org/373132
+Project: openstack/deb-murano-agent
+Branch: refs/heads/master
