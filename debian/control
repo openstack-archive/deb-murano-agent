@@ -31,8 +31,8 @@ Build-Depends-Indep: python-anyjson,
                      subunit,
                      testrepository,
 Standards-Version: 3.9.8
-Vcs-Browser: https://git.openstack.org/cgit/openstack/deb-murano-agent
-Vcs-Git: https://git.openstack.org/openstack/deb-murano-agent
+Vcs-Browser: https://git.openstack.org/cgit/openstack/deb-murano-agent?h=debian%2Fnewton
+Vcs-Git: https://git.openstack.org/openstack/deb-murano-agent -b debian/newton
 Homepage: https://github.com/openstack/murano-agent
 
 Package: murano-agent
