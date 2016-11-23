@@ -3,7 +3,7 @@ Section: net
 Priority: extra
 Maintainer: PKG OpenStack <openstack-devel@lists.alioth.debian.org>
 Uploaders: Thomas Goirand <zigo@debian.org>,
-Build-Depends: debhelper (>= 9),
+Build-Depends: debhelper (>= 10),
                dh-python,
                dh-systemd,
                openstack-pkg-tools (>= 23~),
@@ -39,6 +39,7 @@ Package: murano-agent
 Architecture: all
 Section: python
 Depends: adduser,
+         lsb-base,
          python-anyjson (>= 0.3.3),
          python-eventlet (>= 0.18.4),
          python-git,
