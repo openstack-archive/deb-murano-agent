@@ -1,0 +1,10 @@
+Verified+1: Murano CI
+Code-Review+2: Victor Ryzhenkin (freerunner) <vryzhenkin@mirantis.com>
+Code-Review+2: zhurong <aaronzhu1121@gmail.com>
+Workflow+1: zhurong <aaronzhu1121@gmail.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Thu, 23 Mar 2017 01:32:45 +0000
+Reviewed-on: https://review.openstack.org/435077
+Project: openstack/deb-murano-agent
+Branch: refs/heads/master
