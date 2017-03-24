@@ -1,0 +1,11 @@
+Verified+1: Murano CI
+Code-Review+1: Reedip <reedip.banerjee@gmail.com>
+Code-Review+2: Victor Ryzhenkin (freerunner) <vryzhenkin@mirantis.com>
+Code-Review+2: Felipe Monteiro <felipe.monteiro@att.com>
+Workflow+1: Felipe Monteiro <felipe.monteiro@att.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 24 Mar 2017 15:58:48 +0000
+Reviewed-on: https://review.openstack.org/449501
+Project: openstack/deb-murano-agent
+Branch: refs/heads/master
